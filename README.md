@@ -5,3 +5,6 @@ Simple social media APP made with MERN stack. I wanted to learn more about React
 
 # DREAMS 
 APP where you can post pictures with tags, title and description. You can also edit and like them.
+
+
+# APPLICATION ERROR ON HEROKU = NEEDS FIXING!
