@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Avatar, AppBar, Typography, Toolbar, Button } from '@material-ui/core'
 import { useDispatch } from 'react-redux'
 import { Link, useHistory, useLocation } from 'react-router-dom'
+import decode from 'jwt-decode'
 
 import useStyles from './NavbarStyles'
 import dreams from '../../images/dreams.png';
@@ -24,7 +25,11 @@ const Navbar = () => {
   useEffect(() => {
     const token = user?.token
 
-    // JWT
+    if(token) {
+      const decodedToken = decode(token)
+
+      if(decodedToken.exp * 1000 < new Date().getTime()) logout()
+    }
 
     setUser(JSON.parse(localStorage.getItem('profile')))
   }, [location])
